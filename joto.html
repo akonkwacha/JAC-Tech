@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JAC-TEC</title>
+  <style>
+* {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+    }
+    
+    /* Conteneur général */
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin:0 auto;
+    }
+       .background {
+        background-image: url('file:///storage/emulated/0/Ir Ricardo/background.jpg');
+        background-size: cover;
+        background-position: center;
+        height: 100%;
+        width: 100%;
+        filter: blur(50px);
+        position: fixed;
+        top: 0;
+        left: 0;
+      z-index:-1;
+    }
+    
+    <!-- menu debut -->
+     .menu-btn {
+      position: absolute;
+            right: 10px;
+            top: 0%;
+            transform: translateY(-50%);
+            font-size: 20px;
+            background-color: transparent ;
+            color: none ;
+            border: none;
+            color: white;
+            cursor: pointer;
+            floating:right; vu
+           }
+        .sidebar {
+            z-index:1000;
+            position: fixed;
+            top: 0;
+            left: -230px;
+            width: 230px;
+            height: 90%;
+            background: #333;
+            color: white;
+            transition: left 0.3s;
+            padding-top: 60px;
+        }
+        .sidebar a {
+            display: block;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+        }
+        .sidebar a:hover {
+            background:  #007BFF;
+        }
+        .sidebar.active {
+            left: 0;
+        }
+        .close-btn {
+            position: absolute;
+            top:10px;
+            right: 20px;
+            font-size: 24px;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+       <!-- menu item/button -->
+    
+    /* Section Hero */
+     .hero h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+    .hero p {
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+    
+    .hero button{
+    margin-bottom: 80px;
+        width:50px;
+        height:40px;
+        background-color: transparent ;
+        color:white;
+        font-size:30px;
+        margin-top:0px;
+        margin-right:10px;
+    }
+    /* Section de textes-boutons défilants */
+    .scroll-buttons {
+      display: flex;
+      overflow-x: auto;
+      white-space: nowrap;
+      background:#eee;
+      padding:4px;
+      scroll-behavior: smooth;
+      position: sticky;
+      top:0px;
+      z-index:1;
+    }
+    .scroll-buttons button {
+      flex: 0 0 auto;
+      margin: 0 5px;
+      padding: 10px 40px;
+      border: none;
+      background: #007BFF;
+      color: #fff;
+      border-radius: 50px;
+      cursor: pointer;
+    }
+    /* Section Hero */
+    .hero {
+      background: url('file:///storage/emulated/0/Ir Ricardo/jac1.jpg') no-repeat center center/cover;
+      padding: 20px 0;
+      position: relative;
+    }
+    
+    /* Section Features */
+    .features{
+      padding: 20px 0;
+    }
+    .features h2{
+     color: #007BFF;
+    }
+    .features-container {
+      display: flex;
+      justify-content: space-between;
+      text-align: center;
+      flex-wrap: wrap;
+    }
+    .feature ,.feature1,.feature2,.feature3,.feature4,.feature5{
+      flex: 1;
+      margin: 15px;
+      padding: 30px 20px;
+      background-color:#fff;
+      border-radius:20px;
+      position: relative;
+      cursor: pointer;
+      min-width: 250px;
+      border:2px solid #48d1cc;
+    }
+    /* Cercle décoratif en haut de chaque feature */
+        
+    .cercle1,.cercle2,.cercle3,.cercle4,.cercle5,.cercle6 {
+    background: url('file:///storage/emulated/0/Ir Ricardo/jac1.jpg') no-repeat center center/cover;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    /* Footer */
+    footer {
+      background-color: #333;
+      color: #fff;
+      padding: 20px 0;
+      text-align: center;
+    }
+    .footer p {
+      font-size: 14px;
+    }
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        display: none;
+        background-color: #fff;
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        width: 200px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      }
+      nav ul li {
+        margin: 20px 0;
+      }
+      .menu-toggle {
+        display: flex;
+      }
+      .features-container {
+        flex-direction: column;
+      }
+    }
+    
+    .my-btn{
+        width:100%;
+        text-align:start;
+        display:flex;
+        
+    }
+    .profile-image {
+    z-index:2000;
+    position: fixed;
+    top: 50px;
+    right: 10px;
+    width: 50px; /* Ajustez la taille selon vos besoins */
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid white; /* Optionnel : ajoute une bordure blanche */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+/* la section YouTube */
+.youtube {
+    display: flex;
+    flex-direction: column;  /* Organisation en colonne */
+    justify-content: center; /* Centrage horizontal */
+    align-items: center; /* Centrage vertical */
+    text-align: center;
+    padding: 5px;
+}
+
+.youtube p {
+    margin-bottom:5px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.youtube input {
+    border-radius: 8px;
+    padding: 10px;
+    width: 80%;
+    max-width: 300px;
+    margin-bottom:2px;
+}
+
+.youtube button {
+    border-radius: 50px;
+    margin-bottom: 10px;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.youtube button:hover {
+    background-color: #7b68ee;
+}
+
+
+  </style>
+</head>
+<body>
+    <header>
+  <!-- Menu fixe -->
+            <div class="sidebar" id="sidebar">
+        <button class="close-btn" onclick="toggleMenu()">&times;</button>
+  <a href="#services" id="accueil">Services</a>
+ <a href="#portfolio" id="services">projets</a>
+ <a href="#about" id="propos">À Propos</a>
+ <a href="#contact" id="jotobot">Jotobot chat Messenger</a>
+ <a href="#contact" id="contact">Contact</a>
+    </div>
+        <div class="background"></div>
+        <img src="logo1.png" alt="Profil" class="profile-image" id="Apropos">
+  </header>
+  
+  
+  <!-- Section Héro -->
+  <section class="hero">
+    <div class="my-btn">  <button class="menu-btn" onclick="toggleMenu()">&#9776;</button></div>
+    
+      
+    </div>
+  </section>
+  
+  <!-- Section de boutons textes défilants -->
+  <section class="scroll-buttons">
+    <button id="bouton1">Site web</button>
+    <button id="bouton2">chatbot fb</button>
+    <button id="bouton3">Affiches</button>
+    <button id="bouton4">logos</button>
+    <button id="bouton5">Calendrier</button>
+  </section>
+  
+  <!-- Section Features -->
+  <section class="features">
+    <div class="container features-container">
+      <div class="feature">
+        <div class="cercle1"></div>
+        <h2>Java</h2>
+        <p>
+            Java est un langage robuste, orienté objet et très répandu dans l’industrie. En l’apprenant, vous développerez une solide compréhension de la programmation structurée et orientée objet, ce qui constitue une base essentielle pour de nombreux autres langages. Grâce à son écosystème riche et à sa forte présence dans le développement d’applications d’entreprise, maîtriser Java ouvre la porte à de nombreuses opportunités professionnelles.
+        </p>
+      </div>
+      <div class="feature1">
+        <div class="cercle2"></div>
+        <h2>JavaScript</h2>
+        <p>JavaScript est incontournable pour le développement web moderne. En l’apprenant, vous pourrez créer des sites web interactifs et dynamiques, concevoir des applications web et mobiles, et exploiter des frameworks populaires comme React, Angular ou Vue.js. JavaScript est un langage en perpétuelle évolution, ce qui vous permettra de rester au cœur de l’innovation technologique.</p>
+      </div>
+      <div class="feature2">
+        <div class="cercle3"></div>
+        <h2>Python</h2>
+        <p>Python se distingue par sa syntaxe simple et claire, idéale pour les débutants, tout en étant suffisamment puissant pour des projets complexes. Utilisé dans des domaines aussi variés que l’intelligence artificielle, l’analyse de données, l’automatisation et le développement web, Python offre une grande polyvalence. Apprendre Python, c’est choisir un langage qui simplifie la programmation tout en ouvrant des perspectives passionnantes dans de nombreux secteurs.</p>
+      </div>
+       <div class="feature3">
+        <div class="cercle4"></div>
+        <h2>HTML</h2>
+        <p>HTML est le socle du web. Maîtriser ce langage de balisage vous permettra de structurer efficacement le contenu de vos pages web. C’est la première étape pour comprendre le fonctionnement d’internet et construire des sites accessibles et bien organisés. En apprenant HTML, vous vous dotez d’une compétence indispensable pour toute carrière dans le développement web.</p>
+      </div>
+       <div class="feature4">
+        <div class="cercle5"></div>
+        <h2>CSS</h2>
+        <p>CSS vous permet de transformer une simple page HTML en une expérience visuelle attrayante et interactive. Grâce à lui, vous pourrez styliser, mettre en page et animer vos sites web pour offrir une interface utilisateur de qualité. Apprendre CSS, c’est acquérir l’art de concevoir des designs responsives et modernes, ce qui est essentiel dans un monde où l’esthétique et l’ergonomie jouent un rôle crucial.</p>
+      </div>
+       <div class="feature5">
+        <div class="cercle6"></div>
+        <h2>XML</h2>
+        <p>XML, bien qu’un peu moins médiatisé que d’autres langages, reste fondamental pour l’échange et le stockage de données structurées. Il est largement utilisé dans les services web, la configuration d’applications et l’intégration de systèmes. En apprenant XML, vous développerez une compétence clé pour comprendre et manipuler des données dans des environnements complexes, renforçant ainsi votre polyvalence dans le domaine informatique.</p>
+      </div>
+    </div>
+    </section>
+    <!-- menu Youtube -->
+  <section class="youtube">
+  <div class="youtube">
+  <p>Envoyer un message et s'abonner à YouTube</p>
+    <input type="text" id="message" placeholder="Entrez votre message">
+    <br>
+    <button onclick="envoyerMessage()">Envoyer et S'abonner</button>
+    </div>
+  </section>
+      
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 JAC-Techology. Tous droits réservés.</p>
+    </div>
+  </footer>
+  
+<script>
+    //fonction youtube
+    function envoyerMessage() {
+            var message = document.getElementById("message").value;
+            
+            if (message.trim() === "") {
+                alert("Veuillez entrer un message !");
+                return;
+            }
+
+            // Remplace 'UCXXXXXXXXXXX' par l'ID de ta chaîne YouTube
+            var channelID = "https://youtube.com/@janvierakonkwa-yz4mz?si=nhafmP0JXrAr70Cr"; 
+            var youtubeUrl = `https://www.youtube.com/channel/${channelID}`;
+
+            // Ouvrir YouTube avec le message dans un nouvel onglet
+            window.open(youtubeUrl, "_blank");
+        }
+        
+        //fonction menu
+       function toggleMenu() {
+            var sidebar = document.getElementById("sidebar");
+            sidebar.classList.toggle("active");
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+      // Gestion du menu mobile
+      
+  function openWindow(fileName) {
+    window.open(fileName, "_blank", "width=800,height=600");
+  }
+
+  // Gestion des liens du menu
+  const accueil = document.getElementById('accueil');
+  if (accueil) {
+    accueil.addEventListener('click', function () {
+      openWindow("Ricardo.html");
+    });
+  }
+
+  const services = document.getElementById('services');
+  if (services) {
+    services.addEventListener('click', function () {
+      openWindow("Ricardo.html");
+    });
+  }
+
+  const projets = document.getElementById('projets');
+  if (projets) {
+    projets.addEventListener('click', function () {
+      openWindow("Ricardo.html");
+    });
+  }
+
+  const jotobot = document.getElementById('jotobot');
+  if (jotobot) {
+    jotobot.addEventListener('click', function () {
+      openWindow("Ricardo.html");
+    });
+  }
+
+  const propos = document.getElementById('propos');
+  if (propos) {
+    propos.addEventListener('click', function () {
+      openWindow("Ricardo.html");
+    });
+  }
+
+const heroButton = document.getElementById('contact');
+  if (contact) {
+    contact.addEventListener('click', function () {
+      openWindow("Ricardo.html");
+    });
+  }
+
+  // Gestion du bouton de la section Héro
+  
+  document.getElementById('Apropos');
+  if (Apropos) {
+    Apropos.addEventListener('click', function () {
+      openWindow("Ricardo.html");
+    });
+  }
+
+  // bouton défilant horizontal
+  document.getElementById('bouton1');
+  if (bouton1) {
+    bouton1.addEventListener('click', function () {
+      openWindow("Ricardo.html");
+    });
+  }
+  
+  document.getElementById('bouton2');
+  if (bouton2) {
+    bouton2.addEventListener('click', function () {
+      openWindow("Ricardo.html");
+    });
+  }
+  document.getElementById('bouton3');
+  if (bouton3) {
+    bouton3.addEventListener('click', function () {
+      openWindow("Ricardo.html");
+    });
+  }
+  
+  document.getElementById('bouton4');
+  if (bouton4) {
+    bouton4.addEventListener('click', function () {
+      openWindow("Ricardo.html");
+    });
+  }
+  
+  document.getElementById('bouton5');
+  if (bouton5) {
+    bouton5.addEventListener('click', function () {
+      openWindow("Ricardo.html");
+    });
+  }
+
+  // Gestion des boutons de la section de textes défilants
+  document.querySelectorAll('.feature').forEach(feature => {
+    feature.addEventListener('click', function () {
+      const fileName = feature.getAttribute('data-file') || "janvier.html"; // Optionnel : définir un fichier par défaut
+      openWindow(fileName);
+    });
+  });
+
+  document.querySelectorAll('.feature1').forEach(feature => {
+    feature.addEventListener('click', function () {
+      const fileName = feature.getAttribute('data-file') || "janvier.html"; // Optionnel : définir un fichier par défaut
+      openWindow(fileName);
+    });
+  });
+
+  document.querySelectorAll('.feature2').forEach(feature => {
+    feature.addEventListener('click', function () {
+      const fileName = feature.getAttribute('data-file') || "janvier.html"; // Optionnel : définir un fichier par défaut
+      openWindow(fileName);
+    });
+  });
+
+  document.querySelectorAll('.feature3').forEach(feature => {
+    feature.addEventListener('click', function () {
+      const fileName = feature.getAttribute('data-file') || "janvier.html"; // Optionnel : définir un fichier par défaut
+      openWindow(fileName);
+    });
+  });
+
+  document.querySelectorAll('.feature4').forEach(feature => {
+    feature.addEventListener('click', function () {
+      const fileName = feature.getAttribute('data-file') || "janvier.html"; // Optionnel : définir un fichier par défaut
+      openWindow(fileName);
+    });
+  });
+
+  document.querySelectorAll('.feature5').forEach(feature => {
+    feature.addEventListener('click', function () {
+      const fileName = feature.getAttribute('data-file') || "Ricardo.html"; // Optionnel : définir un fichier par défaut
+      openWindow(fileName);
+    });
+  });
+});
+</script>
+</body>
+</html>
